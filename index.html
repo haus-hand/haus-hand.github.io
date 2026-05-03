@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Haus & Hand – Ihr zuverlässiger Partner für Entrümpelung, Haushaltsauflösung, Umzüge, Renovierung, Malerarbeiten, Trockenbau, Bodenleger, Gartenpflege und Reinigung in Owingen am Bodensee.">
   <title>Haus & Hand – Handwerk mit Herz und Verstand | Owingen Bodensee</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -408,7 +405,7 @@
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@hausundhand.de">info@hausundhand.de</a>
+            <a href="mailto:info@haus-hand.com">info@haus-hand.com</a>
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -508,7 +505,7 @@
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@hausundhand.de">info@hausundhand.de</a>
+            <a href="mailto:info@haus-hand.com">info@haus-hand.com</a>
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -540,7 +537,7 @@
     <div class="footer-bottom">
       <div class="container">
         <p>© 2026 Haus &amp; Hand – Rund ums Haus. Alle Rechte vorbehalten.</p>
-        <p><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+        <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
       </div>
     </div>
   </footer>
@@ -734,11 +731,11 @@
           (phone ? `Telefon: ${phone}\n` : '') +
           `Anliegen: ${topic}\n\n` +
           `Nachricht:\n${message}\n`;
-        const url = `mailto:info@hausundhand.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const url = `mailto:info@haus-hand.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = url;
         status.hidden = false;
         status.className = 'form-status success';
-        status.textContent = 'Ihr E-Mail-Programm öffnet sich. Falls nicht: schreiben Sie uns direkt an info@hausundhand.de.';
+        status.textContent = 'Ihr E-Mail-Programm öffnet sich. Falls nicht: schreiben Sie uns direkt an info@haus-hand.com.';
       });
     })();
 
