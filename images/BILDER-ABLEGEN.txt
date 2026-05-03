@@ -1,0 +1,28 @@
+BILDER ABLEGEN – Haus & Hand Version 1
+========================================
+
+Lege deine Bilder mit GENAU diesen Dateinamen in den entsprechenden Ordner:
+
+📁 images/
+   ├── logo.png              → Das Logo (Cartoon-Mann mit Hammer/Schraubenschlüssel)
+   ├── hero.jpg              → Großes Hero-Hintergrundbild (z.B. das Bild mit Team & Transporter)
+   ├── about.jpg             → Bild für „Über uns" Sektion (z.B. Team bei der Arbeit, Werkzeuggürtel etc.)
+   │
+   └── 📁 gallery/
+       ├── fassade-fertig.jpg     → Fertig gestrichene Fassade (gelbe Hausfront)
+       ├── geruest.jpg            → Gerüst an der Fassade (während der Arbeit)
+       ├── garten-vorher.jpg      → Garten/Teich vor der Pflege (Baustelle)
+       ├── garten-nachher.jpg     → Garten/Teich nach der Pflege (sonnig, fertig)
+       ├── keller-vorher.jpg      → Keller voll mit Gerümpel (vorher)
+       ├── keller-nachher.jpg     → Keller leer & sauber (nachher)
+       ├── haus-aussen.jpg        → Saniertes Einfamilienhaus außen
+       └── boden.jpg              → Innenraum mit verlegtem Boden / leerer Raum
+
+EMPFEHLUNG:
+- JPG für Fotos (kleinere Datei, ausreichend Qualität)
+- Bilder vor dem Hochladen optimieren (z.B. tinypng.com), Zielgröße ~200-400 KB pro Bild
+- Hero-Bild & große Galerie-Bilder: ca. 1600x1000px ausreichend
+- Kleine Galerie-Bilder: ca. 800x600px ausreichend
+- Logo idealerweise als PNG mit transparentem Hintergrund
+
+Du kannst Dateien auch anders benennen – dann musst du in index.html die Pfade anpassen.
