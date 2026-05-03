@@ -408,6 +408,13 @@
       </div>
 
       <form class="contact-form-card reveal" id="anfrageForm" novalidate>
+        <!-- Web3Forms hidden fields -->
+        <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE">
+        <input type="hidden" name="from_name" value="Haus &amp; Hand Webseite">
+        <input type="hidden" name="subject" value="Neue Anfrage über haus-hand.com">
+        <!-- Honeypot (spam protection) -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
         <div class="form-row">
           <label class="field">
             <span>Name *</span>
@@ -697,38 +704,57 @@
     }
     document.querySelectorAll('[data-ba]').forEach(setupBA);
 
-    // Contact form → opens email client with pre-filled data
+    // Contact form → POST to Web3Forms (sends email to info@haus-hand.com)
     (() => {
       const form = document.getElementById('anfrageForm');
       if (!form) return;
       const status = document.getElementById('formStatus');
-      form.addEventListener('submit', (e) => {
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+      const setStatus = (kind, text) => {
+        status.hidden = false;
+        status.className = 'form-status ' + kind;
+        status.textContent = text;
+      };
+
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!form.checkValidity()) {
-          status.hidden = false;
-          status.className = 'form-status error';
-          status.textContent = 'Bitte alle Pflichtfelder ausfüllen.';
+          setStatus('error', 'Bitte alle Pflichtfelder ausfüllen.');
           form.reportValidity();
           return;
         }
-        const data = new FormData(form);
-        const name = data.get('name')?.trim() || '';
-        const email = data.get('email')?.trim() || '';
-        const phone = data.get('phone')?.trim() || '';
-        const topic = data.get('topic') || '';
-        const message = data.get('message')?.trim() || '';
-        const subject = `Anfrage: ${topic} (${name})`;
-        const body =
-          `Name: ${name}\n` +
-          `E-Mail: ${email}\n` +
-          (phone ? `Telefon: ${phone}\n` : '') +
-          `Anliegen: ${topic}\n\n` +
-          `Nachricht:\n${message}\n`;
-        const url = `mailto:info@haus-hand.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = url;
-        status.hidden = false;
-        status.className = 'form-status success';
-        status.textContent = 'Ihr E-Mail-Programm öffnet sich. Falls nicht: schreiben Sie uns direkt an info@haus-hand.com.';
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Wird gesendet…';
+        }
+        setStatus('info', 'Anfrage wird gesendet…');
+
+        try {
+          const data = new FormData(form);
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+          const json = await res.json().catch(() => ({}));
+          if (res.ok && json.success) {
+            form.reset();
+            setStatus('success', 'Vielen Dank! Ihre Anfrage ist eingegangen — wir melden uns innerhalb von 24 Stunden.');
+          } else {
+            const msg = json.message || 'Unbekannter Fehler beim Senden.';
+            setStatus('error', `Senden fehlgeschlagen: ${msg} Bitte rufen Sie uns an oder schreiben Sie direkt an info@haus-hand.com.`);
+          }
+        } catch (err) {
+          setStatus('error', 'Verbindungsproblem — bitte später erneut versuchen oder direkt an info@haus-hand.com schreiben.');
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = submitBtnHTML;
+          }
+        }
       });
     })();
 
