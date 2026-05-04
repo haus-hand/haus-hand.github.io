@@ -706,8 +706,8 @@
       const foot = wrapper.querySelector('.ba-toggle');
       function apply() {
         let p = pct;
-        if (mode === 'before') p = 0;
-        if (mode === 'after') p = 100;
+        if (mode === 'before') p = 100;
+        if (mode === 'after') p = 0;
         afterWrap.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
         divider.style.left = p + '%';
         handle.style.left = p + '%';
