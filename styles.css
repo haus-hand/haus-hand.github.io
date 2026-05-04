@@ -1612,11 +1612,19 @@ ul { list-style: none; }
     background: var(--dark-2);
     padding: 24px;
     gap: 16px;
-    transform: translateY(-120%);
-    transition: transform var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
     border-bottom: 1px solid var(--line);
+    pointer-events: none;
   }
-  .main-nav.open { transform: translateY(0); }
+  .main-nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
   .nav-link.active::after { display: none; }
 
   .phone-pill span { display: none; }
