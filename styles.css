@@ -1607,22 +1607,21 @@ ul { list-style: none; }
 
   .main-nav {
     position: fixed;
-    top: 70px; left: 0; right: 0;
+    top: -100vh; left: 0; right: 0;
     flex-direction: column;
     background: var(--dark-2);
     padding: 24px;
     gap: 16px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    transition: opacity var(--transition), top var(--transition), visibility var(--transition);
     border-bottom: 1px solid var(--line);
     pointer-events: none;
   }
   .main-nav.open {
+    top: 70px;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
     pointer-events: auto;
   }
   .nav-link.active::after { display: none; }
